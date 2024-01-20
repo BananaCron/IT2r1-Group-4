@@ -1,58 +1,63 @@
 CREATE TABLE currentstock (
-  productcode varchar(45),
-  current_quantity,
-  last_updated
+  productcode varchar(45) NOT NULL,
+  current_quantity int,
+  last_updated varchar(45)
   PRIMARY KEY (productcode)
 ) ;
 
-INSERT INTO currentstock VALUES ();
+INSERT INTO currentstock VALUES ('PROD1', 100, '07/20/2024');
 
 CREATE TABLE customers (
-  cid int NOT NULL,
-  customercode varchar(50),
+  customercode varchar(50) NOT NULL,
   fullname varchar(50),
   address varchar(50),
-  contactnumber varchar(50),
-  PRIMARY KEY (cid)
+  PRIMARY KEY (customercode)
 );
 
-INSERT INTO customers VALUES ();
+INSERT INTO customers VALUES ('CUST24', 'Ian Venarate', 'Cagayan Orriental');
 
 CREATE TABLE products (
-  pid int NOT NULL,
+  productID int NOT NULL,
   productcode varchar(50),
   productname varchar(50),
-  costprice double precision,
-  sellprice double precision,
-  brand varchar(50),
-  PRIMARY KEY (pid),
+  price double precision,
+  brand varchar(50)
+  PRIMARY KEY (productID),
   UNIQUE (productcode)
 );
 
-INSERT INTO products VALUES ();
+INSERT INTO products VALUES (05, 'PROD1', 'Apple Phone', 12000.00, 'Apple');
 
 CREATE TABLE purchaseinfo (
   purchaseID int NOT NULL,
-  suppliercode varchar(50),
   productcode varchar(50),
-  dat varchar(50),
-  quanti int,
-  totalcost double precision,
+  date varchar(50),
+  quantity int,
+  total_amount double precision,
   PRIMARY KEY (purchaseID)
 ) ;
 
-INSERT INTO purchaseinfo VALUES ();
+INSERT INTO purchaseinfo VALUES (02, 'PROD1', 12/24/2024, 10, 120000.00);
 
-CREATE TABLE users (
-  uid int NOT NULL,
-  fullname varchar(45),
-  address varchar(45),
-  contactnumber varchar(10),
-  username varchar(20),
-  userpassword varchar(200),
-  usertype varchar(45),
-  PRIMARY KEY (uid)
+CREATE TABLE supplier (
+  supplierID int NOT NULL,
+  suppliername varcahr(45),
+  contactinfo int,
+  address varchar(100)
+  PRIMARY KEY (supplierID)
 ) ;
 
-INSERT INTO users VALUES ()
+INSERT INTO supplier VALUES (03, 'Apple Shop', 09123183455, 'CDO')
 
+CREATE TABLE admintype (
+  adminID int NOT NULL,
+  name varcahr(45),
+  address varchar(100),
+  username varchar(20),
+  userpassword varchar (20),
+  usertype varchar (45)
+  PRIMARY KEY (adminID)
+  CHECK (type in ('CASHIER', 'MANAGER'))
+) ;
+
+INSERT INTO admintype VALUES (01, 'Lenlen Pokita', 'Cagayan De Davao', 'cashier1', 'root', 'CASHIER')
