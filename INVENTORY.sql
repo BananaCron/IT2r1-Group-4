@@ -1,7 +1,7 @@
 CREATE TABLE currentstock (
   productcode varchar(45) NOT NULL,
   current_quantity int,
-  last_updated varchar(45)
+  last_updated varchar(45),
   PRIMARY KEY (productcode)
 ) ;
 
@@ -21,7 +21,7 @@ CREATE TABLE products (
   productcode varchar(50),
   productname varchar(50),
   price double precision,
-  brand varchar(50)
+  brand varchar(50),
   PRIMARY KEY (productID),
   UNIQUE (productcode)
 );
@@ -41,9 +41,9 @@ INSERT INTO purchaseinfo VALUES (02, 'PROD1', 12/24/2024, 10, 120000.00);
 
 CREATE TABLE supplier (
   supplierID int NOT NULL,
-  suppliername varcahr(45),
-  contactinfo int,
-  address varchar(100)
+  suppliername varchar(45),
+  contactinfo varchar(11),
+  address varchar(100),
   PRIMARY KEY (supplierID)
 ) ;
 
@@ -51,13 +51,15 @@ INSERT INTO supplier VALUES (03, 'Apple Shop', 09123183455, 'CDO')
 
 CREATE TABLE admintype (
   adminID int NOT NULL,
-  name varcahr(45),
+  name varchar(45),
   address varchar(100),
   username varchar(20),
   userpassword varchar (20),
-  usertype varchar (45)
-  PRIMARY KEY (adminID)
-  CHECK (type in ('CASHIER', 'MANAGER'))
+  usertype varchar (45),
+  PRIMARY KEY (adminID),
+  CHECK (usertype in ('CASHIER', 'MANAGER'))
 ) ;
 
 INSERT INTO admintype VALUES (01, 'Lenlen Pokita', 'Cagayan De Davao', 'cashier1', 'root', 'CASHIER')
+
+SELECT * FROM admintype
