@@ -1,6 +1,7 @@
 CREATE TABLE currentstock (
   productcode varchar(45),
-  quantity int,
+  current_quantity,
+  last_updated
   PRIMARY KEY (productcode)
 ) ;
 
