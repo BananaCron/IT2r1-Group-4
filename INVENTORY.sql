@@ -58,15 +58,20 @@ INSERT INTO currentstock VALUES ('PROD1', 100, '07/20/2024'),
 								('PROD3', 100, '07/25/2024'),
 								('PROD4', 150, '07/25/2024');
 INSERT INTO customers VALUES ('CUST24', 'Ian Venarate', 'Cagayan Orriental');
-INSERT INTO products VALUES (05, 'PROD1', 'Apple Phone', 12000.00, 'Apple');
+INSERT INTO products VALUES (05, 'PROD1', 'Apple Phone', 12000.00, 'Apple'),
+							(06, 'PROD2', 'MyPhone', 11000.00, 'iPhone'),
+							(07, 'PROD3', 'Pixel', 22000.00, 'Goofgl'),
+							(08, 'PROD4', 'RealYou', 22000.00, 'XiaoYou'),
+							(09, 'PROD5', 'OFFO', 13000.00, 'OPPO'),
+INSERT INTO products VALUES (10, 'PROD6', 'OFA', 14000.00, 'OPPO');
 INSERT INTO purchaseinfo VALUES (02, 'PROD1', 12/24/2024, 10, 120000.00);
 INSERT INTO supplier VALUES (03, 'Apple Shop', 09123183455, 'CDO')
 INSERT INTO admintype VALUES (01, 'Lenlen Pokita', 'Cagayan De Davao', 'cashier1', 'root', 'CASHIER')
 
-DELETE FROM currentstock WHERE last_updated = '07/23/2024'
+DELETE FROM products WHERE productcode='PROD1'
 
-UPDATE currentstock 
-SET current_quantity = 98
-WHERE productcode = 'PROD1'
+UPDATE products
+SET price = 13000
+WHERE productcode = 'PROD2'
 
-SELECT * FROM currentstock WHERE last_updated = '07/25/2024'
+SELECT * FROM products WHERE price = 13000
